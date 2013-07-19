@@ -5,3 +5,7 @@ require 'sinatra'
 get '/questionnaire' do
 	erb(:question)
 end
+
+get '/helppage' do
+	erb(:help)
+end
