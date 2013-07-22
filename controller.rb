@@ -3,9 +3,13 @@ require 'sinatra'
 # TODO: add your GET handlers here
 
 get '/questionnaire' do
-	erb(:question)
+	halt erb(:question)
 end
 
 get '/helppage' do
-	erb(:help)
+	halt erb(:help)
+end
+
+get '/clicked' do
+	halt erb(:clickedbutton)
 end
