@@ -14,6 +14,7 @@ class CreateSchema < ActiveRecord::Migration
   		t.string :email
   		t.string :role
   		t.string :last_questionnaire
+  	end
 end
 
   def down
