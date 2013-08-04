@@ -5,7 +5,6 @@
 #0
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Question.create(topic: 'Computer',
-				type:  'true/false',
-				question_text:  'Everything you do online is secure.',
-				correct_answer: 'true')
+#Question.create(question_topic: 'Computer',
+##				question_type:  'true/false',
+##				correct_answer: 'true')
