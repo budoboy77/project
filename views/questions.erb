@@ -12,33 +12,17 @@
         </tr>
       </thead>
       <tbody>
+        <% @questions.each do |question| %>
         <tr>
-          <td>Computer</td>
-          <td>True/False</td>
-          <td>Everything you do online is secure.</td>
-          <td>
-            <br></td>
-          <td>
-            <br></td>
-          <td>
-            <br></td>
-          <td>
-            <br></td>
-          <td>true</td>
+          <td><%= question.topic %></td>
+          <td><%= question.type %></td>
+          <td><%= question.question_text %></td>
+          <td><%= question.answer1 %></td>
+          <td><%= question.answer2 %></td>
+          <td><%= question.answer3 %></td>
+          <td><%= question.answer4 %></td>
+          <td><%= question.correct_answer %></td>
         </tr>
-        <tr>
-          <td>GSS</td>
-          <td>Multiple Choice</td>
-          <td>Who is our insurance provider?</td>
-          <td>Cigna
-            <br></td>
-          <td>Pacific Life
-            <br></td>
-          <td>MetLife
-            <br></td>
-          <td>Allstate
-            <br></td>
-          <td>1</td>
-        </tr>
+        <% end %>
       </tbody>
     </table>
