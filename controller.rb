@@ -13,3 +13,7 @@ end
 get '/clicked' do
 	halt erb(:clickedbutton)
 end
+
+get '/admin' do
+	halt erb(:admin)
+end
