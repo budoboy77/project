@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728032028) do
+ActiveRecord::Schema.define(:version => 20130804215430) do
 
   create_table "questions", :force => true do |t|
-    t.string "topic"
-    t.string "type"
+    t.string "question_topic"
+    t.string "question_type"
     t.text   "question_text"
-    t.string "answer1"
-    t.string "answer2"
-    t.string "answer3"
-    t.string "answer4"
+    t.string "choice1"
+    t.string "choice2"
+    t.string "choice3"
+    t.string "choice4"
     t.string "correct_answer"
   end
 
