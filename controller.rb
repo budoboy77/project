@@ -26,3 +26,7 @@ get '/questions' do
 	@questions = Question.all
 	halt erb(:questions)
 end
+
+get '/add-question' do
+	halt erb(:add_question)
+end
