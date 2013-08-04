@@ -1,4 +1,4 @@
-require 'sinatra'
+require './dvc-sinatra.rb'
 
 # TODO: add your GET handlers here
 
@@ -22,5 +22,7 @@ get '/admin' do
 end
 
 get '/questions' do
+	@title = "Questions"
+	@questions = Question.all
 	halt erb(:questions)
 end
