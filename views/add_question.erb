@@ -1,32 +1,70 @@
-<p>
-<div class="panel">
-  <div class="panel-heading">
-    <h3 class="panel-title">Question Topic</h3>
-  </div>
-  <%== text_field_tag :question_topic, "", size: 40 %>
-</div>
-</p>
-<p>
-<div class="panel">
-  <div class="panel-heading">
-    <h3 class="panel-title">Question Type</h3>
-  </div>
-  <%== text_field_tag :question_type, "", size: 40 %>
-</div>
-</p>
-<p>
-<div class="panel">
-  <div class="panel-heading">
-    <h3 class="panel-title">Question Topic</h3>
-  </div>
-  <%== text_field_tag :question_topic, "", size: 40 %>
-</div>
-</p>
-<p>
-<div class="panel">
-  <div class="panel-heading">
-    <h3 class="panel-title">Question Topic</h3>
-  </div>
-  <%== text_field_tag :question_topic, "", size: 40 %>
-</div>
-</p>
+ <div class="well">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Question Category</th>
+            <th>Question Type</th>
+            <th>Question Text</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%== select_tag :question_topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a category..." %></td>
+            <td><%== text_field_tag :question_type, "", size: 40 %></td>
+            <td><%== text_area_tag :question_text, "", rows: 3, cols: 40 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<div class="well">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Question Category</th>
+            <th>Question Type</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%== text_field_tag :question_topic, "", size: 40 %></td>
+            <td><%== text_field_tag :question_type, "", size: 40 %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="well">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Choice 1</h3>
+        </div>&lt;%== text_field_tag :question_choice1, "", size: 40 %&gt;
+      </div>
+    </div>
+    <div class="well">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Choice 2</h3>
+        </div>&lt;%== text_field_tag :question_choice2, "", size: 40 %&gt;
+      </div>
+    </div>
+    <div class="well">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Choice 3</h3>
+        </div>&lt;%== text_field_tag :question_choice3, "", size: 40 %&gt;
+      </div>
+    </div>
+    <div class="well">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Choice 4</h3>
+        </div>&lt;%== text_field_tag :question_choice4, "", size: 40 %&gt;
+      </div>
+    </div>
+    <div class="well">
+      <div class="panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Correct Answer</h3>
+        </div>&lt;%== text_field_tag :question_correct_answer, "", size: 40 %&gt;
+      </div>
+    </div>
