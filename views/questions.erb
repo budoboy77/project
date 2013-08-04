@@ -14,13 +14,13 @@
       <tbody>
         <% @questions.each do |question| %>
         <tr>
-          <td><%= question.topic %></td>
-          <td><%= question.type %></td>
+          <td><%= question.question_topic %></td>
+          <td><%= question.question_type %></td>
           <td><%= question.question_text %></td>
-          <td><%= question.answer1 %></td>
-          <td><%= question.answer2 %></td>
-          <td><%= question.answer3 %></td>
-          <td><%= question.answer4 %></td>
+          <td><%= question.choice1 %></td>
+          <td><%= question.choice2 %></td>
+          <td><%= question.choice3 %></td>
+          <td><%= question.choice4 %></td>
           <td><%= question.correct_answer %></td>
         </tr>
         <% end %>
