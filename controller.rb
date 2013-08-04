@@ -3,10 +3,12 @@ require 'sinatra'
 # TODO: add your GET handlers here
 
 get '/questionnaire' do
-	halt erb(:question)
+	@title = "questionnaire"
+	halt erb(:questionnaire)
 end
 
 get '/helppage' do
+	@title = "help"
 	halt erb(:help)
 end
 
@@ -15,5 +17,10 @@ get '/clicked' do
 end
 
 get '/admin' do
+	@title = "admin"
 	halt erb(:admin)
+end
+
+get '/questions' do
+	halt erb(:questions)
 end
