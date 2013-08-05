@@ -1,40 +1,20 @@
-<div class="well">
-  <table class="table">
+<div>
+  <table>
     <thead>
       <tr>
         <th>Question Category</th>
         <th>Question Type</th>
         <th>Question Text</th>
+        <th>Choices</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><%== select_tag :question_topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a category..." %></td>
-        <td><%== select_tag :question_type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], ""), prompt: "Choose a type..." %></td>
-        <td><%== text_area_tag :question_text, "", rows: 3, cols: 40 %></td>
+        <td><%== select_tag :topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a category..." %></td>
+        <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], ""), prompt: "Choose a type..." %></td>
+        <td><%== text_area_tag :text, "", rows: 3, cols: 100 %></td>
+        <td><%== text_field_tag :choice1, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label></td>
+
       </tr>
-    </tbody>
-  </table>
-</div>
-<div class="well">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Choice 1</th>
-        <th>Choice 2</th>
-        <th>Choice 3</th>
-        <th>Choice 4</th>
-        <th>Correct Answer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%== text_area_tag :choice1, "", rows: 3, cols: 40 %></td>
-        <td><%== text_area_tag :choice2, "", rows: 3, cols: 40 %></td>
-        <td><%== text_area_tag :choice3, "", rows: 3, cols: 40 %></td>
-        <td><%== text_area_tag :choice3, "", rows: 3, cols: 40 %></td>
-        <td><%== text_field_tag :correct_answer, "", size: 1 %></td>
-      </tr>
-    </tbody>
   </table>
 </div>
