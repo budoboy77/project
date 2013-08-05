@@ -2,9 +2,9 @@ require './dvc-sinatra.rb'
 
 # TODO: add your GET handlers here
 
-get '/questionnaire' do
-	@title = "questionnaire"
-	halt erb(:questionnaire)
+get '/quiz' do
+	@title = "quiz"
+	halt erb(:quiz)
 end
 
 get '/helppage' do
@@ -25,8 +25,4 @@ get '/questions' do
 	@title = "Questions"
 	@questions = Question.all
 	halt erb(:questions)
-end
-
-get '/add-question' do
-	halt erb(:add_question)
 end
