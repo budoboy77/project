@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   host: localhost
-  database: "questionnaire"
+  database: "quiz"
   username: postgres
   password: postgres
   encoding: unicode
