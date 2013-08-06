@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" href="/stylesheets/google-bootstrap.css"> -->
     <link rel="stylesheet" href="/stylesheets/divshot-util.css">
     <link rel="stylesheet" href="/stylesheets/divshot-canvas.css">
+    <script src="/js/add-param-labels.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script>
@@ -44,6 +45,7 @@
         </div>
       </div>
     </div>
+    <%== form_tag request.path_info %>
 <%== yield %>
   </body>
 

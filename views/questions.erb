@@ -13,10 +13,10 @@
         <td><%== select_tag :topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a topic..." %></td>
         <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], ""), prompt: "Choose a type..." %></td>
         <td><%== text_area_tag :text, "", rows: 3, cols: 100 %></td>
-        <td><%== text_field_tag :choice1, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label></td>
-
+        <td><%== text_field_tag :choice1, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
       </tr>
   </table>
+  <%== submit_tag "Add question" %>
 </div>
 <div class="well">
 <table class="table table-striped table-hover table-bordered table-fixed">
@@ -36,7 +36,11 @@
     <% @questions.each do |question| %>
     <tr>
       <td><%= question.question_topic %></td>
-      <td><%= question.question_type %></td>
+      <% if question.question_type == "tf" %>
+      <td>True/False</td>
+      <% elsif question.question_type == "mc" %>
+      <td>Multiple Choice</td>
+      <% end %>
       <td><%= question.question_text %></td>
       <td><%= question.choice1 %></td>
       <td><%= question.choice2 %></td>
