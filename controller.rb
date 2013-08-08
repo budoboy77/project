@@ -25,7 +25,7 @@ end
 
 get '/questions' do
 	@title = "Questions"
-	@questions = Question.order(:id).all
+	@questions = Question.order("id desc").all
 	halt erb(:questions)
 end
 
