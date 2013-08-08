@@ -9,6 +9,16 @@
       </tr>
     </thead>
     <tbody>
+      <% if params[:id] != nil %>
+       <tr>
+        <td><%== select_tag :topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], @edit_question.question_topic), prompt: "Choose a topic..." %></td>
+        <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], @edit_question.question_type), prompt: "Choose a type..." %></td>
+        <td><%== text_area_tag :text, @edit_question.question_text, rows: 3, cols: 100 %></td>
+        <td><%== text_field_tag :choice1, @edit_question.choice1, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, @edit_question.choice2, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, @edit_question.choice3, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, @edit_question.choice4, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
+      </tr>
+  </table>
+  <%== submit_tag "Update question" %>
+      <% else %>
       <tr>
         <td><%== select_tag :topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a topic..." %></td>
         <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], ""), prompt: "Choose a type..." %></td>
@@ -17,6 +27,7 @@
       </tr>
   </table>
   <%== submit_tag "Add question" %>
+  <% end %>
 </div>
 <div class="well">
   <h3>Most recent questions</h3>
