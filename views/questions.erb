@@ -22,6 +22,7 @@
 <table class="table table-striped table-hover table-bordered table-fixed">
   <thead>
     <tr>
+      <th></th>
       <th>Topic</th>
       <th>Type</th>
       <th>Question text<br></th>
@@ -35,6 +36,7 @@
   <tbody>
     <% @questions.each do |question| %>
     <tr>
+      <td><a href="/questions/edit/<%= question.id %>">Edit</a> <%== submit_tag "delete" %></td>
       <td><%= question.question_topic %></td>
       <% if question.question_type == "tf" %>
       <td>True/False</td>

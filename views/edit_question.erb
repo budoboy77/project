@@ -1,0 +1,20 @@
+<div class="well">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Question Topic</th>
+        <th>Question Type</th>
+        <th>Question Text</th>
+        <th>Choices</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%== select_tag :topic, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], @question.question_topic), prompt: "Choose a topic..." %></td>
+        <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], @question.question_type), prompt: "Choose a type..." %></td>
+        <td><%== text_area_tag :text, @question.question_text, rows: 3, cols: 100 %></td>
+        <td><%== text_field_tag :choice1, @question.choice1, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, @question.choice2, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, @question.choice3, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, @question.choice4, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
+      </tr>
+  </table>
+  <%== submit_tag "Update question" %>
+</div>
