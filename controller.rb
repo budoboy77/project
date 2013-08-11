@@ -42,8 +42,22 @@ end
 
 post '/questions' do
 	question = Question.new
-	question.question_category = params[:category]
-	question.question_type 	= params[:type]
+	if params[:new_category] != "" 
+		category = Category.new
+		category.name = params[:new_category]
+		question.question_category = params[:new_category]
+		category.save!
+	else
+		question.question_category = params[:category]
+	end
+	if params[:new_type] != ""
+		type = Type.new
+		type.name = params[:new_type]
+		question.question_type 	= params[:new_type]
+		type.save!
+	else
+		question.question_type 	= params[:type]
+	end
 	question.question_text 	= params[:text]
 	question.choice1		= params[:choice1]
 	question.choice2		= params[:choice2]
@@ -64,8 +78,22 @@ end
 
 post '/questions/:id' do
 	question 			= Question.find(params[:id])
-	question.question_category = params[:category]
-	question.question_type 	= params[:type]
+	if params[:new_category] != ""
+		category = Category.new
+		category.name = params[:new_category]
+		question.question_category = params[:new_category]
+		category.save!
+	else
+		question.question_category = params[:category]
+	end
+	if params[:new_type] != ""
+		type = Type.new
+		type.name = params[:new_type]
+		question.question_type 	= params[:new_type]
+		type.save!
+	else
+		question.question_type 	= params[:type]
+	end
 	question.question_text 	= params[:text]
 	question.choice1		= params[:choice1]
 	question.choice2		= params[:choice2]
@@ -81,5 +109,15 @@ post '/questions/:id' do
 		question.correct_answer	= params[:choice4]
 	end
 	question.save!
+	if params[:new_category] != nil
+		category = Category.new
+		category.name = params[:new_category]
+		category.save!
+	end
+	if params[:new_type] != nil
+		type = Type.new
+		type.name = params[:new_type]
+		type.save!
+	end
 	redirect "/questions"
 end
