@@ -1,7 +1,7 @@
 class CreateQuestionsTable < ActiveRecord::Migration
   def up
   	create_table :questions do |t|
-      t.string :question_topic
+      t.string :question_category
       t.string :question_type
       t.text :question_text
 	  	t.string :choice1

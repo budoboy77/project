@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130804215430) do
 
   create_table "questions", :force => true do |t|
-    t.string "question_topic"
+    t.string "question_category"
     t.string "question_type"
     t.text   "question_text"
     t.string "choice1"
