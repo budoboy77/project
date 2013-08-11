@@ -11,8 +11,8 @@
     <tbody>
       <% if params[:id] != nil %>
        <tr>
-        <td><%== select_tag :category, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], @edit_question.question_category), prompt: "Choose a category..." %></td>
-        <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], @edit_question.question_type), prompt: "Choose a type..." %></td>
+        <td><%== select_tag :category, options_from_collection_for_select(@categories, :name, :name, @edit_question.question_category), prompt: "Choose a category..." %></td>
+        <td><%== select_tag :type, options_from_collection_for_select(@types, :name, :name, @edit_question.question_category), prompt: "Choose a type..." %></td>
         <td><%== text_area_tag :text, @edit_question.question_text, rows: 3, cols: 100 %></td>
         <td><%== text_field_tag :choice1, @edit_question.choice1, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, @edit_question.choice2, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, @edit_question.choice3, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, @edit_question.choice4, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
       </tr>
@@ -20,8 +20,8 @@
   <%== submit_tag "Update question" %>
       <% else %>
       <tr>
-        <td><%== select_tag :category, options_for_select([["IT", "IT"], ["GSS",  "GSS"], ["Communications",  "communications"]], ""), prompt: "Choose a category..." %></td>
-        <td><%== select_tag :type, options_for_select([["True/False", "tf"], ["Multiple Choice",  "mc"]], ""), prompt: "Choose a type..." %></td>
+        <td><%== select_tag :category, options_from_collection_for_select(@categories, :name, :name), prompt: "Choose a category..." %></td>
+        <td><%== select_tag :type, options_from_collection_for_select(@types, :name, :name), prompt: "Choose a type..." %></td>
         <td><%== text_area_tag :text, "", rows: 3, cols: 100 %></td>
         <td><%== text_field_tag :choice1, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
       </tr>
@@ -49,11 +49,7 @@
     <tr>
       <td><a href="/questions/<%= question.id %>">Edit</a> <%== submit_tag "delete" %></td>
       <td><%= question.question_category %></td>
-      <% if question.question_type == "tf" %>
-      <td>True/False</td>
-      <% elsif question.question_type == "mc" %>
-      <td>Multiple Choice</td>
-      <% end %>
+      <td><%= question.question_type %></td>
       <td><%= question.question_text %></td>
       <td><%= question.choice1 %></td>
       <td><%= question.choice2 %></td>

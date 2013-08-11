@@ -1,4 +1,4 @@
-class CreateQuestionsTable < ActiveRecord::Migration
+class CreateNewSchema < ActiveRecord::Migration
   def up
   	create_table :questions do |t|
       t.string :question_category
@@ -10,9 +10,17 @@ class CreateQuestionsTable < ActiveRecord::Migration
       t.string :choice4
 	  	t.string :correct_answer
   	end
+    create_table :categories do |t|
+      t.string :name
+    end
+    create_table :types do |t|
+      t.string :name
+    end
 end
 
   def down
   	drop_table :questions
+    drop_table :categories
+    drop_table :types
   end
 end

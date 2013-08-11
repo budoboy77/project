@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804215430) do
+ActiveRecord::Schema.define(:version => 20130811222212) do
+
+  create_table "categories", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "questions", :force => true do |t|
     t.string "question_category"
@@ -22,6 +26,10 @@ ActiveRecord::Schema.define(:version => 20130804215430) do
     t.string "choice3"
     t.string "choice4"
     t.string "correct_answer"
+  end
+
+  create_table "types", :force => true do |t|
+    t.string "name"
   end
 
 end

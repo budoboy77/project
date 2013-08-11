@@ -26,6 +26,8 @@ end
 get '/questions' do
 		@title = "Questions"
 		@questions = Question.order("id desc").all
+		@types = Type.order(:name).all
+		@categories = Category.order(:name).all
 		halt erb(:questions)
 end
 
@@ -33,6 +35,8 @@ get '/questions/:id' do
 		@edit_question = Question.find(params[:id])
 		@title = "Questions - Edit"
 		@questions = Question.order("id desc").all
+		@types = Type.order(:name).all
+		@categories = Category.order(:name).all
 		halt erb(:questions)
 end
 
