@@ -59,7 +59,7 @@
   <tbody>
     <% @questions.each do |question| %>
     <tr>
-      <td><a href="/questions/<%= question.id %>">Edit</a> <%== submit_tag "delete" %></td>
+      <td><a class=btn href="/questions/<%= question.id %>">Edit</a> <%== submit_tag "delete" %></td>
       <td><%= question.question_category %></td>
       <td><%= question.question_type %></td>
       <td><%= question.question_text %></td>
