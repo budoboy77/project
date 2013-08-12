@@ -24,20 +24,20 @@ get '/admin' do
 end
 
 get '/questions' do
-		@title = "Questions"
-		@questions = Question.order("id desc").all
-		@types = Type.order(:name).all
-		@categories = Category.order(:name).all
-		halt erb(:questions)
+	@title = "Questions"
+	@questions = Question.order("id desc").all
+	@types = Type.order(:name).all
+	@categories = Category.order(:name).all
+	halt erb(:questions)
 end
 
 get '/questions/:id' do
-		@edit_question = Question.find(params[:id])
-		@title = "Questions - Edit"
-		@questions = Question.order("id desc").all
-		@types = Type.order(:name).all
-		@categories = Category.order(:name).all
-		halt erb(:questions)
+	@edit_question = Question.find(params[:id])
+	@title = "Questions - Edit"
+	@questions = Question.order("id desc").all
+	@types = Type.order(:name).all
+	@categories = Category.order(:name).all
+	halt erb(:questions)
 end
 
 post '/questions' do
@@ -110,4 +110,58 @@ post '/questions/:id' do
 	end
 	question.save!
 	redirect "/questions"
+end
+
+get '/categories' do
+	@title = "Categories"
+	@categories = Category.order("id desc").all
+	halt erb(:categories)
+end
+
+get '/categories/:id' do
+	@edit_category = Category.find(params[:id])
+	@title = "Categories - Edit"
+	@categories = Category.order("id desc").all
+	halt erb(:categories)
+end
+
+post '/categories' do
+	category = Category.new
+	category.name = params[:name]
+	category.save!
+	redirect "/categories"
+end
+
+post '/categories/:id' do
+	category 			= Category.find(params[:id])
+	category.name		= params[:name]
+	category.save!
+	redirect "/categories"
+end
+
+get '/types' do
+	@title = "Types"
+	@types = Type.order("id desc").all
+	halt erb(:types)
+end
+
+get '/types/:id' do
+	@edit_type = Type.find(params[:id])
+	@title = "Types - Edit"
+	@types = Type.order("id desc").all
+	halt erb(:types)
+end
+
+post '/types' do
+	type 		= Type.new
+	type.name 	= params[:name]
+	type.save!
+	redirect "/types"
+end
+
+post '/types/:id' do
+	type 		= Type.find(params[:id])
+	type.name	= params[:name]
+	type.save!
+	redirect "/types"
 end

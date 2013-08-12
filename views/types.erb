@@ -1,0 +1,41 @@
+<div class="well">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Type Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if params[:id] != nil %>
+       <tr>
+        <td><%== text_field_tag :name, Type.find(params[:id]).name, size: 40 %></td>
+      </tr>
+  </table>
+  <%== submit_tag "Update Type" %>
+      <% else %>
+      <tr>
+        <td><%== text_field_tag :name, "", size: 40 %></td>
+      </tr>
+  </table>
+  <%== submit_tag "Add Type" %>
+  <% end %>
+</tbody>
+</div>
+<div class="well">
+  <table class="table table-striped table-hover table-bordered table-fixed">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @types.each do |type| %>
+    <tr>
+      <td><a href="/types/<%= type.id %>">Edit</a> <%== submit_tag "delete" %></td>
+      <td><%= type.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
