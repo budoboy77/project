@@ -109,15 +109,5 @@ post '/questions/:id' do
 		question.correct_answer	= params[:choice4]
 	end
 	question.save!
-	if params[:new_category] != nil
-		category = Category.new
-		category.name = params[:new_category]
-		category.save!
-	end
-	if params[:new_type] != nil
-		type = Type.new
-		type.name = params[:new_type]
-		type.save!
-	end
 	redirect "/questions"
 end
