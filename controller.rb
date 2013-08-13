@@ -23,61 +23,29 @@ get '/admin' do
 	halt erb(:admin)
 end
 
-get '/questions' do
-	@title = "Questions"
+get '/admin/questions' do
+	redirect "/admin/questions/new"
+end
+
+get '/admin/questions/:id' do
+	if params[:id] != "new"
+		@edit_question = Question.find(params[:id])
+		@title = "Questions - Edit"
+	else
+		@title = "Questions"
+	end
 	@questions = Question.order("id desc").all
 	@types = Type.order(:name).all
 	@categories = Category.order(:name).all
 	halt erb(:questions)
 end
 
-get '/questions/:id' do
-	@edit_question = Question.find(params[:id])
-	@title = "Questions - Edit"
-	@questions = Question.order("id desc").all
-	@types = Type.order(:name).all
-	@categories = Category.order(:name).all
-	halt erb(:questions)
-end
-
-post '/questions' do
-	question = Question.new
-	if params[:new_category] != "" 
-		category = Category.new
-		category.name = params[:new_category]
-		question.question_category = params[:new_category]
-		category.save!
+post '/admin/questions/:id' do
+	if params[:id] == "new"
+		question = Question.new
 	else
-		question.question_category = params[:category]
+		question = Question.find(params[:id])
 	end
-	if params[:new_type] != ""
-		type = Type.new
-		type.name = params[:new_type]
-		question.question_type 	= params[:new_type]
-		type.save!
-	else
-		question.question_type 	= params[:type]
-	end
-	question.question_text 	= params[:text]
-	question.choice1		= params[:choice1]
-	question.choice2		= params[:choice2]
-	question.choice3		= params[:choice3]
-	question.choice4		= params[:choice4]
-	if params[:answer1] != nil
-		question.correct_answer	= params[:choice1]
-	elsif params[:answer2] != nil
-		question.correct_answer	= params[:choice2]
-	elsif params[:answer3] != nil
-		question.correct_answer	= params[:choice3]
-	else params[:answer4] != nil
-		question.correct_answer	= params[:choice4]
-	end
-	question.save!
-	redirect "/questions"
-end
-
-post '/questions/:id' do
-	question 			= Question.find(params[:id])
 	if params[:new_category] != ""
 		category = Category.new
 		category.name = params[:new_category]
@@ -109,59 +77,57 @@ post '/questions/:id' do
 		question.correct_answer	= params[:choice4]
 	end
 	question.save!
-	redirect "/questions"
+	redirect "/admin/questions/new"
 end
 
-get '/categories' do
-	@title = "Categories"
+get '/admin/categories' do
+	redirect "/admin/categories/new"
+end
+
+get '/admin/categories/:id' do
+	if params[:id] != "new"
+		@edit_category = Category.find(params[:id])
+		@title = "Categories - Edit"
+	else
+		@title = "Categories"
+	end
 	@categories = Category.order("id desc").all
 	halt erb(:categories)
 end
 
-get '/categories/:id' do
-	@edit_category = Category.find(params[:id])
-	@title = "Categories - Edit"
-	@categories = Category.order("id desc").all
-	halt erb(:categories)
-end
-
-post '/categories' do
-	category = Category.new
-	category.name = params[:name]
-	category.save!
-	redirect "/categories"
-end
-
-post '/categories/:id' do
-	category 			= Category.find(params[:id])
+post '/admin/categories/:id' do
+	if params[:id] == "new"
+		category = Category.new
+	else
+		category = Category.find(params[:id])
+	end
 	category.name		= params[:name]
 	category.save!
-	redirect "/categories"
+	redirect "/admin/categories/new"
 end
 
-get '/types' do
-	@title = "Types"
+get '/admin/types' do
+	redirect "/admin/types/new"
+end
+
+get '/admin/types/:id' do
+	if params[:id] != "new"
+		@edit_type = Type.find(params[:id])
+		@title = "Types - Edit"
+	else
+		@title = "Types"
+	end
 	@types = Type.order("id desc").all
 	halt erb(:types)
 end
 
-get '/types/:id' do
-	@edit_type = Type.find(params[:id])
-	@title = "Types - Edit"
-	@types = Type.order("id desc").all
-	halt erb(:types)
-end
-
-post '/types' do
-	type 		= Type.new
-	type.name 	= params[:name]
-	type.save!
-	redirect "/types"
-end
-
-post '/types/:id' do
-	type 		= Type.find(params[:id])
+post '/admin/types/:id' do
+	if params[:id] == "new"
+		type = Type.new
+	else
+		type = Type.find(params[:id])
+	end
 	type.name	= params[:name]
 	type.save!
-	redirect "/types"
+	redirect "/admin/types/new"
 end
