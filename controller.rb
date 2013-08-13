@@ -29,9 +29,23 @@ end
 
 get '/admin/questions/:id' do
 	if params[:id] != "new"
-		@edit_question = Question.find(params[:id])
+		edit_question = Question.find(params[:id])
+		@category = edit_question.question_category
+		@type = edit_question.question_type
+		@text = edit_question.question_text
+		@choice1 = edit_question.choice1
+		@choice2 = edit_question.choice2
+		@choice3 = edit_question.choice3
+		@choice4 = edit_question.choice4
 		@title = "Questions - Edit"
 	else
+		@category = ""
+		@type = ""
+		@text = ""
+		@choice1 = ""
+		@choice2 = ""
+		@choice3 = ""
+		@choice4 = ""
 		@title = "Questions"
 	end
 	@questions = Question.order("id desc").all
@@ -41,6 +55,10 @@ get '/admin/questions/:id' do
 end
 
 post '/admin/questions/:id' do
+	if params[:commit] == "Delete question"
+		Question.destroy(params[:id])
+		redirect '/admin/questions/new'
+	end
 	if params[:id] == "new"
 		question = Question.new
 	else
@@ -86,9 +104,11 @@ end
 
 get '/admin/categories/:id' do
 	if params[:id] != "new"
-		@edit_category = Category.find(params[:id])
+		edit_category = Category.find(params[:id])
+		@name = edit_category.name
 		@title = "Categories - Edit"
 	else
+		@edit_category_name = ""
 		@title = "Categories"
 	end
 	@categories = Category.order("id desc").all
@@ -96,6 +116,10 @@ get '/admin/categories/:id' do
 end
 
 post '/admin/categories/:id' do
+	if params[:commit] == "Delete Category"
+		Category.destroy(params[:id])
+		redirect '/admin/categories/new'
+	end
 	if params[:id] == "new"
 		category = Category.new
 	else
@@ -103,6 +127,7 @@ post '/admin/categories/:id' do
 	end
 	category.name		= params[:name]
 	category.save!
+
 	redirect "/admin/categories/new"
 end
 
@@ -112,9 +137,11 @@ end
 
 get '/admin/types/:id' do
 	if params[:id] != "new"
-		@edit_type = Type.find(params[:id])
+		edit_type = Type.find(params[:id])
+		@name = edit_type.name
 		@title = "Types - Edit"
 	else
+		@edit_type_name = ""
 		@title = "Types"
 	end
 	@types = Type.order("id desc").all
@@ -122,6 +149,10 @@ get '/admin/types/:id' do
 end
 
 post '/admin/types/:id' do
+	if params[:commit] == "Delete Type"
+		Type.destroy(params[:id])
+		redirect '/admin/types/new'
+	end
 	if params[:id] == "new"
 		type = Type.new
 	else

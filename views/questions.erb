@@ -9,36 +9,23 @@
       </tr>
     </thead>
     <tbody>
-      <% if params[:id] != "new" %>
        <tr>
-        <td><%== select_tag :category, options_from_collection_for_select(@categories, :name, :name, @edit_question.question_category), prompt: "Choose a category..." %><br>
+        <td><%== select_tag :category, options_from_collection_for_select(@categories, :name, :name, @category), prompt: "Choose a category..." %><br>
           <hr>
           Add a new category<br>
           <%== text_field_tag :new_category, "", size: 40 %></td>
-        <td><%== select_tag :type, options_from_collection_for_select(@types, :name, :name, @edit_question.question_type), prompt: "Choose a type..." %><br>
+        <td><%== select_tag :type, options_from_collection_for_select(@types, :name, :name, @type), prompt: "Choose a type..." %><br>
           <hr>
           Add a new type<br>
           <%== text_field_tag :new_type, "", size: 40 %></td>
-        <td><%== text_area_tag :text, @edit_question.question_text, rows: 3, cols: 100 %></td>
-        <td><%== text_field_tag :choice1, @edit_question.choice1, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, @edit_question.choice2, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, @edit_question.choice3, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, @edit_question.choice4, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
+        <td><%== text_area_tag :text, @text, rows: 3, cols: 100 %></td>
+        <td><%== text_field_tag :choice1, @choice1, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, @choice2, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, @choice3, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, @choice4, size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
       </tr>
   </table>
-  <%== submit_tag "Update question" %>
-      <% else %>
-      <tr>
-        <td><%== select_tag :category, options_from_collection_for_select(@categories, :name, :name), prompt: "Choose a category..." %><br>
-          <hr>
-          Add a new category<br>
-        <%== text_field_tag :new_category, "", size: 40 %></td>
-        <td><%== select_tag :type, options_from_collection_for_select(@types, :name, :name), prompt: "Choose a type..." %><br>
-          <hr>
-          Add a new type<br>
-          <%== text_field_tag :new_type, "", size: 40 %></td>
-        <td><%== text_area_tag :text, "", rows: 3, cols: 100 %></td>
-        <td><%== text_field_tag :choice1, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer1, "on" %></label><br><%== text_field_tag :choice2, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer2, "on" %></label><br><%== text_field_tag :choice3, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer3, "on" %></label><br><%== text_field_tag :choice4, "", size: 40 %><label class="checkbox inline" for "checkbox"> <%== check_box_tag :answer4, "on" %></label></td>
-      </tr>
-  </table>
-  <%== submit_tag "Add question" %>
+  <% if params[:id] != "new" %>
+    <%== submit_tag "Update question" %> <%== submit_tag "Delete question" %>
+  <% else %>    
+    <%== submit_tag "Add question" %>
   <% end %>
 </div>
 <div class="well">
@@ -59,7 +46,7 @@
   <tbody>
     <% @questions.each do |question| %>
     <tr>
-      <td><a class=btn href="/admin/questions/<%= question.id %>">Edit</a> <%== submit_tag "delete" %></td>
+      <td><a class=btn href="/admin/questions/<%= question.id %>">Edit</a></td>
       <td><%= question.question_category %></td>
       <td><%= question.question_type %></td>
       <td><%= question.question_text %></td>

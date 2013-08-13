@@ -6,18 +6,14 @@
       </tr>
     </thead>
     <tbody>
-      <% if params[:id] != "new" %>
-       <tr>
-        <td><%== text_field_tag :name, Category.find(params[:id]).name, size: 40 %></td>
-      </tr>
-  </table>
-  <%== submit_tag "Update Category" %>
-      <% else %>
       <tr>
-        <td><%== text_field_tag :name, "", size: 40 %></td>
+        <td><%== text_field_tag :name, @name, size: 40 %></td>
       </tr>
   </table>
-  <%== submit_tag "Add Category" %>
+  <% if params[:id] != "new" %>
+    <%== submit_tag "Update Category" %>  <%== submit_tag "Delete Category" %>
+  <% else %>
+    <%== submit_tag "Add Category" %>
   <% end %>
 </tbody>
 </div>
@@ -32,7 +28,7 @@
   <tbody>
     <% @categories.each do |category| %>
     <tr>
-      <td><a href="/admin/categories/<%= category.id %>">Edit</a> <%== submit_tag "delete" %></td>
+      <td><a href="/admin/categories/<%= category.id %>">Edit</a></td>
       <td><%= category.name %></td>
     </tr>
     <% end %>
