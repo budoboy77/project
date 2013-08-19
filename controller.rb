@@ -55,6 +55,17 @@ get '/admin/questions/:id' do
 end
 
 post '/admin/questions/:id' do
+	if params[:commit] == "Search"
+	 	@questions = Question.where("question_text ilike ?", "%#{params[:criteria]}%").all
+	 	@category = ""
+		@type = ""
+		@text = ""
+		@choice1 = ""
+		@choice2 = ""
+		@choice3 = ""
+		@choice4 = ""
+	 	halt erb(:questions)
+	end
 	if params[:commit] == "Delete question"
 		Question.destroy(params[:id])
 		redirect '/admin/questions/new'
