@@ -3,6 +3,11 @@ require 'pry'
 
 # TODO: add your GET handlers here
 
+get "/admin/quiz-builder" do
+	@categories = Category.order(:name).all
+	halt erb(:quiz_builder)
+end
+
 get '/quiz' do
 	@title = "quiz"
 	
