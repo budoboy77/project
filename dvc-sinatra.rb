@@ -4,16 +4,22 @@ require 'sinatra'
 require 'yaml'
 require 'action_view' # for Rails form helpers
 require 'erubis' # for escaping of HTML
+require 'will_paginate/active_record' if defined? WillPaginate
+require 'sinatra-footnotes' if defined? Sinatra::Footnotes
 
 # Escape HTML
 set :erb, escape_html: true
 
-# Enable sessions -- note that a web server restart will invalidate all cookies
-use Rack::Session::Cookie, secret: SecureRandom.hex
+# Enable sessions -- hardcoded secret to avoid logout on server restart.
+use Rack::Session::Cookie,
+  secret: "524aee674662bbe8a363988a7b4dbcb304f52ae61ef12fc1f3b6a34d8388c71202"
+
+use Rack::Flash, sweep: true if defined? Rack::Flash
 
 # for Rails form helpers
 helpers ActionView::Helpers::FormTagHelper
 helpers ActionView::Helpers::FormOptionsHelper
+helpers ActionView::Helpers::DynamicForm if defined? ActionView::Helpers::DynamicForm
 
 # avoid error message that we get from using Rails form helpers with Sinatra
 helpers do
