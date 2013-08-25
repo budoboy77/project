@@ -3,6 +3,10 @@ require 'pry'
 
 # TODO: add your GET handlers here
 
+get "/register" do
+	halt erb(:register)
+end
+
 get "/admin/quiz-builder" do
 	@categories = Category.order(:name).all
 	halt erb(:quiz_builder)
