@@ -1,7 +1,11 @@
 <html>
   
   <head>
-    <title>Quiz App - <%= @title %></title>
+    <% if @register_title != "" %>
+      <title>Register New User</title>
+    <% else %>
+      <title>Quiz App - <%= @title %></title>
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
@@ -18,7 +22,21 @@
   </head>
   
   <body>
-    <title>Quiz App - <%= @title %></title>
+    <% if flash.has?(:error) %>
+      <div class="flash-error">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <% if flash.has?(:success) %>
+      <div class="flash-error">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if @register_title != "" %>
+      <title>Register New User</title>
+    <% else %>
+      <title>Quiz App - <%= @title %></title>
+    <% end %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
@@ -28,7 +46,10 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Quiz App - <%= @title %></a>
+          <% if @register_title != "" %>
+            <title>Register New User</title>
+          <% else %>
+            <a class="brand" href="#">Quiz App - <%= @title %></a>
           <div class="navbar-content">
             <ul class="nav  pull-right">
               <li class="active">
@@ -42,6 +63,7 @@
               </li>
             </ul>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
