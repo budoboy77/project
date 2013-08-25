@@ -7,6 +7,23 @@ get "/register" do
 	halt erb(:register)
 end
 
+post "/register" do
+	@register_title = "Register"
+	user = User.new
+	user.first_name = params[:first_name]
+	user.last_name = params[:last_name]
+	user.email = params[:email]
+	user.password = params[:password]
+	user.password_confirmation = params[:password_confirmation]
+	if user.password != user.password_confirmation
+		flash.now[:error] = "Passwords do not match."
+		halt erb(:register)
+	else
+		user.save!
+		redirect "/login"
+	end
+end
+
 get "/admin/quiz-builder" do
 	@categories = Category.order(:name).all
 	halt erb(:quiz_builder)
