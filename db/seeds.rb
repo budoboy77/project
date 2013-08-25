@@ -29,11 +29,13 @@ Question.create(question_category: 'GSS',
 				choice1:        'True', 
 				correct_answer: 'True')
 
-User.create(name: 'Bryan White',
+User.create(first_name: 'Bryan',
+			last_name: 'White',
 			email: 'bew@bryanewhite.com',
 			password: '12345')
 
-User.create(name: 'Bilbo Baggins',
+User.create(first_name: 'Bilbo',
+			last_name: 'Baggins',
 			email: 'bilbo@bagend.com',
 			password: '54321')
 
